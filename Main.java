@@ -4,9 +4,10 @@ import java.util.Scanner;
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        System.out.println("------ Welcome to Shopping Portal ------");
         ArrayList<Shops> shopList = new ArrayList<>();
 
-        Shops telisonic = new Shops("Telisonic");
+        Shops telisonic = new Shops("1. Telisonic");
         shopList.add(telisonic);
         telisonic.addProduct(new Product("4K UHD Smart TV with HDR10+", 899.99));
         telisonic.addProduct(new Product("OLED TV with Dolby Vision", 2999.99));
@@ -19,15 +20,37 @@ public class Main {
         telisonic.addProduct(new Product("Universal fast charger with multiple ports", 39.99));
         telisonic.addProduct(new Product("Gold-plated 3.5mm audio cable", 29.99));
 
+        Shops ikea = new Shops("2. IKEA");
+        shopList.add(ikea);
+        ikea.addProduct(new Product ("3-seater contemporary sofa in gray fabric", 199.99));
+        ikea.addProduct(new Product("Solid oak coffee table with carved details", 349.99));
+
         int choice = 7;
         while(choice != 0) {
-            System.out.println("------ Welcome to Shopping Portal ------");
+            System.out.println("Available Shops ---");
             for (Shops shop : shopList) {
-                System.out.println(shop);
+                System.out.println(shop.getName());
             }
-            System.out.println();
+            System.out.println("0. Exit\n");
             System.out.println("Select a Shop(1-10): ");
             choice = scanner.nextInt();
+
+            switch(choice) {
+                case 1:
+                    System.out.println("---- TELISONIC ----");
+                    Shops selectedShop1 = shopList.get(0);
+                    for (Product item : selectedShop1.getProducts()) {
+                        System.out.println(item);
+                    }
+                case 2:
+                    System.out.println("---- IKEA ----");
+                    Shops selectedShop2 = shopList.get(1);
+                    for (Product item : selectedShop2.getProducts()) {
+                        System.out.println(item);
+                    }
+
+
+            }
         }
         
 
